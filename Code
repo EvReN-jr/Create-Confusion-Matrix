@@ -1,0 +1,20 @@
+def creater_cm(pred,test):
+    """
+    This function matches Artificial Neural Networks or other source results and Test results and creates the confusion matrix.
+    Variables must be numpy array.
+    Function need numpy library.
+    """
+    
+    assert pred.shape==test.shape # Precondition.
+
+    score_array=np.zeros(pred.shape)
+    
+    # Finding maximum element, index of maximum element and scoring.
+    for index in range(len(pred)):
+        for n_p,element_p in enumerate(pred[index]):
+            if element_p==max(pred[index]):
+                for n_t,element_t in enumerate(test[index]):
+                    if element_t==max(test[index]):
+                        score_array[n_t][n_p]+=1
+    
+  return score_array
